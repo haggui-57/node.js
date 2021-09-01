@@ -1,0 +1,58 @@
+ex:1
+
+@@ -0,0 +1 @@
+console.log('HELLO WORLD') 
+
+ex:2
+@@ -0,0 +1,5 @@
+let s = 0;
+for (let i = 2; i <= process.argv.length - 1; i++) {
+  s = s + Number(process.argv[i]);
+}
+console.log(s); 
+
+ex:3
+@@ -0,0 +1,4 @@
+var fs =require('fs')
+// console.log(fs)
+var k =fs.readFileSync(process.argv[2]).toString().split('\n').length;
+console.log(--k); 
+
+ex:4
+@@ -0,0 +1,7 @@
+var fs=require('fs')
+fs.readFile(process.argv[2],'utf8',(err,string)=>{
+
+if(err)return console.error(err);
+const result =string.split('\n').length-1;
+console.log(result)
+}) 
+
+ex:5
+@@ -0,0 +1,10 @@
+const http=require('http')
+// console.log(http)
+const url =process.argv[2]
+http.get(url,(response)=>{
+    response.on('error',(err) => console.error(err));
+    response.setEncoding('utf8');
+    response.on('data',data => {
+        console.log(data)
+    })
+}) 
+
+ex:6
+@@ -0,0 +1,12 @@
+const net =require('net');
+// console.log(net)
+const moment =require('moment');
+
+// console.log(moment)
+const port =process.argv[2]
+const server =net.createServer(socket=>{
+const time = moment().format('YYYY-MM-DD HH:mm');
+socket.write(time);
+socket.end('\n');
+})
+server.listen(port) 
+
